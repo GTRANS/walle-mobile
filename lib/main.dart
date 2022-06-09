@@ -17,6 +17,9 @@ Future<void> main() async {
   // ));
 
   runApp(MaterialApp(
+    theme: ThemeData(
+      fontFamily: 'Poppins',
+    ),
     debugShowCheckedModeBanner: false,
     initialRoute: '/',
     routes: {
