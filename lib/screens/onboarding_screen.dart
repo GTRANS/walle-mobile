@@ -151,7 +151,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           <Widget>[
             OutlinedButton(
               onPressed: () {
-                if (currentPage == 3.0) {
+                if (currentPage == 2.0) {
                   Navigator.of(context).pushNamed('/login');
                 } else {
                   _pageViewController.jumpToPage((currentPage + 1).toInt());
