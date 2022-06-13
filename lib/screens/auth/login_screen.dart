@@ -235,7 +235,9 @@ class _LoginFormState extends State<LoginForm> {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/register');
+                      },
                       child: const AutoSizeText(
                         'Daftar',
                         style: TextStyle(
