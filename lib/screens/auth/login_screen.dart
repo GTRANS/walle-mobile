@@ -59,84 +59,110 @@ class _LoginFormState extends State<LoginForm> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const SizedBox(height: 45),
-                  Container(
-                    height: 60,
-                    margin: const EdgeInsets.only(bottom: 15),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(
-                        color: CustomColors.main.withOpacity(0.2),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 25.0, top: 10.0, right: 25.0),
-                      child: TextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return '* Required';
-                          }
-                          return null;
-                        },
-                        controller: emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: const InputDecoration(
-                          hintText: 'Email',
-                          hintStyle: TextStyle(
-                            color: CustomColors.grey,
-                            fontSize: 12.0,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, top: 10.0, right: 15.0),
+                    child: TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return '* Required';
+                        }
+                        return null;
+                      },
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        hintText: 'Email',
+                        hintStyle: const TextStyle(
+                          color: CustomColors.grey,
+                          fontSize: 12.0,
+                        ),
+                        isDense: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: CustomColors.main.withOpacity(0.2),
                           ),
-                          isDense: true,
-                          border: InputBorder.none,
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: CustomColors.main.withOpacity(0.8),
+                          ),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: CustomColors.error.withOpacity(0.8),
+                          ),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: CustomColors.error.withOpacity(0.8),
+                          ),
+                          borderRadius: BorderRadius.circular(15.0),
                         ),
                       ),
                     ),
                   ),
-                  Container(
-                    height: 60,
-                    margin: const EdgeInsets.only(bottom: 15),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(
-                        color: CustomColors.main.withOpacity(0.2),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 25.0, top: 10.0, right: 25.0),
-                      child: TextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return '* Required';
-                          }
-                          return null;
-                        },
-                        controller: passwordController,
-                        keyboardType: TextInputType.visiblePassword,
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                          hintStyle: const TextStyle(
-                            color: CustomColors.grey,
-                            fontSize: 12.0,
-                          ),
-                          isDense: true,
-                          border: InputBorder.none,
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _passwordVisible
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              color: CustomColors.grey,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                _passwordVisible = !_passwordVisible;
-                              });
-                            },
-                          ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, top: 10.0, right: 15.0),
+                    child: TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return '* Required';
+                        }
+                        return null;
+                      },
+                      controller: passwordController,
+                      keyboardType: TextInputType.visiblePassword,
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        hintStyle: const TextStyle(
+                          color: CustomColors.grey,
+                          fontSize: 12.0,
                         ),
-                        obscureText: _passwordVisible,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: CustomColors.main.withOpacity(0.2),
+                          ),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: CustomColors.main.withOpacity(0.8),
+                          ),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: CustomColors.error.withOpacity(0.8),
+                          ),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: CustomColors.error.withOpacity(0.8),
+                          ),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        isDense: true,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _passwordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: CustomColors.grey,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _passwordVisible = !_passwordVisible;
+                            });
+                          },
+                        ),
                       ),
+                      obscureText: _passwordVisible,
                     ),
                   ),
                   Row(

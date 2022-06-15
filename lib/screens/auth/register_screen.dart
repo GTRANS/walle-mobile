@@ -50,241 +50,306 @@ class _RegisterFormState extends State<RegisterForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              height: 60,
-              margin: const EdgeInsets.only(bottom: 15),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  color: CustomColors.main.withOpacity(0.2),
-                ),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.only(left: 25.0, top: 10.0, right: 25.0),
-                child: TextFormField(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return '* Required';
-                    }
-                    return null;
-                  },
-                  controller: nameController,
-                  keyboardType: TextInputType.name,
-                  decoration: const InputDecoration(
-                    hintText: 'Nama',
-                    hintStyle: TextStyle(
-                      color: CustomColors.grey,
-                      fontSize: 12.0,
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 15.0, top: 10.0, right: 15.0),
+              child: TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return '* Required';
+                  }
+                  return null;
+                },
+                controller: nameController,
+                keyboardType: TextInputType.name,
+                decoration: InputDecoration(
+                  hintText: 'Nama',
+                  hintStyle: const TextStyle(
+                    color: CustomColors.grey,
+                    fontSize: 12.0,
+                  ),
+                  isDense: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.main.withOpacity(0.2),
                     ),
-                    isDense: true,
-                    border: InputBorder.none,
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.main.withOpacity(0.8),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.error.withOpacity(0.8),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.error.withOpacity(0.8),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
                   ),
                 ),
               ),
             ),
-            Container(
-              height: 60,
-              margin: const EdgeInsets.only(bottom: 15),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  color: CustomColors.main.withOpacity(0.2),
-                ),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.only(left: 25.0, top: 10.0, right: 25.0),
-                child: TextFormField(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return '* Required';
-                    }
-                    return null;
-                  },
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    hintText: 'Email',
-                    hintStyle: TextStyle(
-                      color: CustomColors.grey,
-                      fontSize: 12.0,
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 15.0, top: 10.0, right: 15.0),
+              child: TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return '* Required';
+                  }
+                  return null;
+                },
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  hintText: 'Email',
+                  hintStyle: const TextStyle(
+                    color: CustomColors.grey,
+                    fontSize: 12.0,
+                  ),
+                  isDense: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.main.withOpacity(0.2),
                     ),
-                    isDense: true,
-                    border: InputBorder.none,
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.main.withOpacity(0.8),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.error.withOpacity(0.8),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.error.withOpacity(0.8),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
                   ),
                 ),
               ),
             ),
-            Container(
-              height: 60,
-              margin: const EdgeInsets.only(bottom: 15),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  color: CustomColors.main.withOpacity(0.2),
-                ),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.only(left: 25.0, top: 10.0, right: 25.0),
-                child: TextFormField(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return '* Required';
-                    }
-                    return null;
-                  },
-                  controller: passwordController,
-                  keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                    hintText: 'Password',
-                    hintStyle: const TextStyle(
-                      color: CustomColors.grey,
-                      fontSize: 12.0,
-                    ),
-                    isDense: true,
-                    border: InputBorder.none,
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _passwordVisible
-                            ? Icons.visibility
-                            : Icons.visibility_off,
-                        color: CustomColors.grey,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _passwordVisible = !_passwordVisible;
-                        });
-                      },
-                    ),
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 15.0, top: 10.0, right: 15.0),
+              child: TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return '* Required';
+                  }
+                  return null;
+                },
+                controller: passwordController,
+                keyboardType: TextInputType.visiblePassword,
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  hintStyle: const TextStyle(
+                    color: CustomColors.grey,
+                    fontSize: 12.0,
                   ),
-                  obscureText: _passwordVisible,
+                  isDense: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.main.withOpacity(0.2),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.main.withOpacity(0.8),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.error.withOpacity(0.8),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.error.withOpacity(0.8),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _passwordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      color: CustomColors.grey,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _passwordVisible = !_passwordVisible;
+                      });
+                    },
+                  ),
                 ),
+                obscureText: _passwordVisible,
               ),
             ),
-            Container(
-              height: 60,
-              margin: const EdgeInsets.only(bottom: 15),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  color: CustomColors.main.withOpacity(0.2),
-                ),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.only(left: 25.0, top: 10.0, right: 25.0),
-                child: TextFormField(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return '* Required';
-                    }
-                    if (value != passwordController.text) {
-                      return 'Tidak Sama!';
-                    }
-                    return null;
-                  },
-                  controller: confirmPasswordController,
-                  keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                    hintText: 'Ulang Password',
-                    hintStyle: const TextStyle(
-                      color: CustomColors.grey,
-                      fontSize: 12.0,
-                    ),
-                    isDense: true,
-                    border: InputBorder.none,
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _confirmPasswordVisible
-                            ? Icons.visibility
-                            : Icons.visibility_off,
-                        color: CustomColors.grey,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _confirmPasswordVisible = !_confirmPasswordVisible;
-                        });
-                      },
-                    ),
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 15.0, top: 10.0, right: 15.0),
+              child: TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return '* Required';
+                  }
+                  if (value != passwordController.text) {
+                    return 'Tidak Sama!';
+                  }
+                  return null;
+                },
+                controller: confirmPasswordController,
+                keyboardType: TextInputType.visiblePassword,
+                decoration: InputDecoration(
+                  hintText: 'Ulang Password',
+                  hintStyle: const TextStyle(
+                    color: CustomColors.grey,
+                    fontSize: 12.0,
                   ),
-                  obscureText: _confirmPasswordVisible,
+                  isDense: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.main.withOpacity(0.2),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.main.withOpacity(0.8),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.error.withOpacity(0.8),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: CustomColors.error.withOpacity(0.8),
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _confirmPasswordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      color: CustomColors.grey,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _confirmPasswordVisible = !_confirmPasswordVisible;
+                      });
+                    },
+                  ),
                 ),
+                obscureText: _confirmPasswordVisible,
               ),
             ),
             Row(
               children: [
                 Expanded(
                   flex: 1,
-                  child: Container(
-                    height: 60,
-                    margin: const EdgeInsets.only(bottom: 15, right: 15),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(
-                        color: CustomColors.main.withOpacity(0.2),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Image.asset(
-                          'assets/bendera.png',
-                          width: 26,
-                          height: 26,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15.0, top: 10.0),
+                    child: TextFormField(
+                      readOnly: true,
+                      decoration: InputDecoration(
+                        hintText: '+62',
+                        hintStyle: const TextStyle(
+                          color: CustomColors.black,
+                          fontSize: 12.0,
                         ),
-                        const AutoSizeText(
-                          '+62',
-                          style: TextStyle(
-                            fontSize: 12.0,
-                            color: CustomColors.black,
+                        prefixIcon: Image.asset('assets/bendera.png'),
+                        isDense: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: CustomColors.main.withOpacity(0.2),
                           ),
+                          borderRadius: BorderRadius.circular(15.0),
                         ),
-                      ],
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: CustomColors.main.withOpacity(0.2),
+                          ),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                      ),
                     ),
                   ),
                 ),
                 Expanded(
                   flex: 2,
-                  child: Container(
-                    height: 60,
-                    margin: const EdgeInsets.only(bottom: 15),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(
-                        color: CustomColors.main.withOpacity(0.2),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 25.0, top: 10.0, right: 25.0),
-                      child: TextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return '* Required';
-                          }
-                          if (value.isNotEmpty) {
-                            String pattern =
-                                r'^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$';
-                            RegExp regExp = RegExp(pattern);
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, top: 10.0, right: 15.0),
+                    child: TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return '* Required';
+                        }
+                        if (value.isNotEmpty) {
+                          String pattern =
+                              r'^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$';
+                          RegExp regExp = RegExp(pattern);
 
-                            if (!regExp.hasMatch(value)) {
-                              return 'No. HP tidak valid';
-                            }
+                          if (!regExp.hasMatch(value)) {
+                            return 'No. HP tidak valid';
                           }
-                          return null;
-                        },
-                        controller: phoneController,
-                        keyboardType: TextInputType.phone,
-                        decoration: const InputDecoration(
-                          hintText: 'No. HP',
-                          hintStyle: TextStyle(
-                            color: CustomColors.grey,
-                            fontSize: 12.0,
+                        }
+                        return null;
+                      },
+                      controller: phoneController,
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                        hintText: 'No. HP',
+                        hintStyle: const TextStyle(
+                          color: CustomColors.grey,
+                          fontSize: 12.0,
+                        ),
+                        isDense: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: CustomColors.main.withOpacity(0.2),
                           ),
-                          isDense: true,
-                          border: InputBorder.none,
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: CustomColors.main.withOpacity(0.8),
+                          ),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: CustomColors.error.withOpacity(0.8),
+                          ),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: CustomColors.error.withOpacity(0.8),
+                          ),
+                          borderRadius: BorderRadius.circular(15.0),
                         ),
                       ),
                     ),
