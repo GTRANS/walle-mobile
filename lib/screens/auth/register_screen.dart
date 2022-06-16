@@ -371,7 +371,9 @@ class _RegisterFormState extends State<RegisterForm> {
                   ),
                 ),
                 onPressed: () async {
-                  if (_formKey.currentState!.validate()) {}
+                  if (_formKey.currentState!.validate()) {
+                    Navigator.of(context).pushNamed('/verification');
+                  }
                 },
                 child: const AutoSizeText(
                   'Daftar',
