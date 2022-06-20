@@ -16,6 +16,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
   final TextEditingController _fieldThree = TextEditingController();
   final TextEditingController _fieldFour = TextEditingController();
   final TextEditingController _fieldFive = TextEditingController();
+  final TextEditingController _fieldSix = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +76,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 OtpInput(_fieldThree, false),
                 OtpInput(_fieldFour, false),
                 OtpInput(_fieldFive, false),
+                OtpInput(_fieldSix, false),
               ],
             ),
             TextButton(
