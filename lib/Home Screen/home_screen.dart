@@ -1,40 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/Home%20Screen/beranda.dart';
-import 'package:flutter_application_2/Home%20Screen/history.dart';
-import 'package:flutter_application_2/Home%20Screen/profile.dart';
+import 'package:flutter_application_2/Beranda/beranda.dart';
+import 'package:flutter_application_2/History/history.dart';
+import 'package:flutter_application_2/Profil/profile.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class Homescreen extends StatefulWidget {
+  const Homescreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<Homescreen> createState() => _HomescreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  int currentIndex = 0;
-  final List<Widget> body = [Beranda(), const History(), const Profile()];
-
-  void _onTap(int index) {
-    setState(() {
-      currentIndex = index;
-    });
-  }
-
+class _HomescreenState extends State<Homescreen> {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: body[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Beranda"),
-          BottomNavigationBarItem(icon: Icon(Icons.history), label: "Riwayat"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile")
-        ],
-        currentIndex: currentIndex,
-        selectedItemColor: Colors.green,
-        showUnselectedLabels: true,
-        onTap: _onTap,
-      ),
-    );
-  }
+  Widget build(BuildContext context) => DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        body: const TabBarView(children: [Beranda(), History(), Profile()]),
+        bottomNavigationBar: Container(
+          decoration: const BoxDecoration(
+              boxShadow: [BoxShadow(color: Colors.black)], color: Colors.white),
+          child: const TabBar(
+            labelColor: Colors.green,
+            labelPadding: EdgeInsets.all(0.5),
+            indicatorWeight: 1,
+            labelStyle: TextStyle(fontWeight: FontWeight.bold),
+            unselectedLabelColor: Colors.grey,
+            tabs: [
+              Tab(
+                icon: Icon(Icons.home),
+                iconMargin: EdgeInsets.only(bottom: 5),
+                text: "Beranda",
+              ),
+              Tab(
+                icon: Icon(Icons.history),
+                iconMargin: EdgeInsets.only(bottom: 5),
+                text: "Riwayat",
+              ),
+              Tab(
+                icon: Icon(Icons.person),
+                iconMargin: EdgeInsets.only(bottom: 5),
+                text: "Profil",
+              )
+            ],
+          ),
+        ),
+      ));
 }

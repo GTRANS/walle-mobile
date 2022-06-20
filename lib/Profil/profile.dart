@@ -107,7 +107,7 @@ class _ProfileState extends State<Profile> {
                   buildTextField("Nama", "Input Nama"),
                   buildTextField("No HP", "Input No HP"),
                   buildTextField("Email", "Input Email"),
-                  const SizedBox(height: 190),
+                  const SizedBox(height: 160),
                   Row(
                     children: [
                       OutlinedButton(
