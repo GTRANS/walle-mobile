@@ -1,4 +1,4 @@
-import 'package:capstone/constants/color_constants.dart';
+import '../constants/color_constants.dart';
 import 'package:flutter/material.dart';
 
 class OtpInput extends StatelessWidget {

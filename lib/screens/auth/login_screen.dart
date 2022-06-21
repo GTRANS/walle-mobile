@@ -1,7 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:capstone/constants/color_constants.dart';
+import '../../services/services.dart';
+import '../../view_models/auth_view_model.dart';
+import 'package:provider/provider.dart';
+import '../../constants/color_constants.dart';
+import '../../model/auth_model.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../view_models/token_view_model.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -201,27 +206,33 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          // Response res = await viewModel.login(
-                          //     email: emailController.text,
-                          //     password: passwordController.text);
+                          final LoginInput input = LoginInput(
+                            email: emailController.text,
+                            password: passwordController.text,
+                          );
 
-                          // var code = res.statusCode;
+                          final res = await Provider.of<AuthViewModel>(context,
+                                  listen: false)
+                              .login(input: input);
 
-                          // if (code == 200) {
-                          //   SharedPreferences prefs =
-                          //       await SharedPreferences.getInstance();
+                          if (res.status == ApiStatus.success &&
+                              res.data != null) {
+                            await Provider.of<TokenViewModel>(context,
+                                    listen: false)
+                                .setToken(token: res.data?.token ?? "");
 
-                          //   prefs.setString('token', res.data['token']);
-
-                          //   Navigator.of(context).pushNamedAndRemoveUntil(
-                          //       '/main', (route) => false);
-                          // } else if (code == 401) {
-                          //   ScaffoldMessenger.of(context)
-                          //       .showSnackBar(SnackBar(
-                          //     content: const Text('Invalid Credential'),
-                          //     backgroundColor: Colors.red.shade300,
-                          //   ));
-                          // }
+                            Navigator.of(context).pushNamed('/main');
+                          } else {
+                            if (res.message != null) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(res.message!),
+                                  backgroundColor:
+                                      CustomColors.error.withOpacity(0.3),
+                                ),
+                              );
+                            }
+                          }
                         }
                       },
                       child: const AutoSizeText(

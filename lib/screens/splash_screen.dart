@@ -1,7 +1,7 @@
 import 'dart:async';
 
+import '../services/local_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -18,21 +18,25 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void wait() {
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 1), () {
       navigateUser();
     });
   }
 
   void navigateUser() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var token = prefs.getString('token');
-    var firstTime = prefs.getBool('firstTime') ?? true;
+    LocalStorage storage = LocalStorage();
+    var token = await storage.get(key: 'auth_token');
+    var firstTime = await storage.getBool(key: 'first_time') ?? true;
 
     if (token == null || token.isEmpty) {
       if (firstTime) {
         Navigator.of(context).pushReplacementNamed('/onboarding');
+      } else {
+        Navigator.of(context).pushReplacementNamed('/login');
       }
-      prefs.setBool('firstTime', false);
+      await storage.setBool(key: 'first_time', data: true);
+    } else {
+      Navigator.of(context).pushReplacementNamed('/main');
     }
   }
 

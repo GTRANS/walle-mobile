@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:capstone/constants/color_constants.dart';
-import 'package:capstone/widgets/otp_input.dart';
+import '../../constants/color_constants.dart';
+import '../../widgets/otp_input.dart';
 import 'package:flutter/material.dart';
 
 class VerificationScreen extends StatefulWidget {
