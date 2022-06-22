@@ -8,4 +8,11 @@ class AuthAPI {
 
     return await Future.value(TokenResult.fromJson(response));
   }
+
+  static Future<TokenResult> register({required RegisterInput input}) async {
+    Services repo = Services();
+    final response = await repo.post(url: '/user', data: input);
+
+    return await Future.value(TokenResult.fromJson(response));
+  }
 }

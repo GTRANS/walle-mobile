@@ -1,4 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import '../../services/services.dart';
+import '../../view_models/auth_view_model.dart';
+import 'package:provider/provider.dart';
+import '../../model/auth_model.dart';
 import '../../constants/color_constants.dart';
 import 'package:flutter/material.dart';
 
@@ -104,6 +108,14 @@ class _RegisterFormState extends State<RegisterForm> {
                   if (value == null || value.isEmpty) {
                     return '* Required';
                   }
+                  if (value.isNotEmpty) {
+                    String pattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
+                    RegExp regExp = RegExp(pattern);
+
+                    if (!regExp.hasMatch(value)) {
+                      return 'Email tidak valid!';
+                    }
+                  }
                   return null;
                 },
                 controller: emailController,
@@ -149,6 +161,14 @@ class _RegisterFormState extends State<RegisterForm> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return '* Required';
+                  }
+                  if (value.isNotEmpty) {
+                    String pattern = r'.{8,}';
+                    RegExp regExp = RegExp(pattern);
+
+                    if (!regExp.hasMatch(value)) {
+                      return 'Password minimal 8 karakter!';
+                    }
                   }
                   return null;
                 },
@@ -372,7 +392,31 @@ class _RegisterFormState extends State<RegisterForm> {
                 ),
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    Navigator.of(context).pushNamed('/verification');
+                    final RegisterInput input = RegisterInput(
+                      name: nameController.text,
+                      email: emailController.text,
+                      password: passwordController.text,
+                      phoneNumber: phoneController.text,
+                      roleId: 2,
+                    );
+
+                    final res =
+                        await Provider.of<AuthViewModel>(context, listen: false)
+                            .register(input: input);
+
+                    if (res.status == ApiStatus.success && res.data != null) {
+                      Navigator.of(context).pushNamed('/verification');
+                    } else {
+                      if (res.message != null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(res.message!),
+                            backgroundColor:
+                                CustomColors.error.withOpacity(0.3),
+                          ),
+                        );
+                      }
+                    }
                   }
                 },
                 child: const AutoSizeText(

@@ -33,4 +33,24 @@ class AuthViewModel extends ChangeNotifier {
     }
     return Future.value(_token);
   }
+
+  Future<ApiResponse<TokenResult>> register(
+      {required RegisterInput input}) async {
+    try {
+      changeState(ApiResponse(status: ApiStatus.loading));
+      final res = await AuthAPI.register(input: input);
+      changeState(
+          ApiResponse<TokenResult>(status: ApiStatus.success, data: res));
+    } catch (e) {
+      if (e is DioError) {
+        changeState(ApiResponse(
+            status: ApiStatus.error,
+            message: (e.response?.data ??
+                {'message': e.message} as dynamic)['pesan'] as dynamic));
+      } else {
+        changeState(ApiResponse(status: ApiStatus.error, message: "Error!!!"));
+      }
+    }
+    return Future.value(_token);
+  }
 }
