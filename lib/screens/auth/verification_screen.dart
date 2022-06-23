@@ -1,4 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import '../../services/services.dart';
+import '../../view_models/auth_view_model.dart';
+import '../../view_models/token_view_model.dart';
+import 'package:provider/provider.dart';
+import '../../model/auth_model.dart';
 import '../../constants/color_constants.dart';
 import '../../widgets/otp_input.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +25,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as RegisterInput;
+
     return Scaffold(
       appBar: AppBar(
         leading: const BackButton(color: CustomColors.black),
@@ -56,10 +63,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 ),
               ),
             ),
-            const Center(
+            Center(
               child: AutoSizeText(
-                '{data}',
-                style: TextStyle(
+                args.email ?? '-',
+                style: const TextStyle(
                   fontSize: 12.0,
                   color: CustomColors.main,
                 ),
@@ -80,7 +87,28 @@ class _VerificationScreenState extends State<VerificationScreen> {
               ],
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () async {
+                final res =
+                    await Provider.of<AuthViewModel>(context, listen: false)
+                        .register(input: args);
+
+                if (res.status == ApiStatus.success && res.data != null) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Kirim Ulang Berhasil"),
+                      backgroundColor: CustomColors.main,
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(res.message!),
+                      backgroundColor: CustomColors.error.withOpacity(0.3),
+                    ),
+                  );
+                }
+                //Hit API ulang
+              },
               child: const AutoSizeText(
                 'Kirim Ulang',
                 style: TextStyle(
@@ -104,7 +132,38 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     ),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  final String otp = _fieldOne.text +
+                      _fieldTwo.text +
+                      _fieldThree.text +
+                      _fieldFour.text +
+                      _fieldFive.text +
+                      _fieldSix.text;
+
+                  final VerificationInput input = VerificationInput(
+                    code: otp,
+                    email: args.email,
+                  );
+
+                  final res =
+                      await Provider.of<AuthViewModel>(context, listen: false)
+                          .verification(input: input);
+
+                  if (res.status == ApiStatus.success && res.data != null) {
+                    await Provider.of<TokenViewModel>(context, listen: false)
+                        .setToken(token: res.data?.token ?? "");
+                    Navigator.of(context).pushNamed('/main');
+                  } else {
+                    if (res.message != null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(res.message!),
+                          backgroundColor: CustomColors.error.withOpacity(0.3),
+                        ),
+                      );
+                    }
+                  }
+                },
                 child: const AutoSizeText(
                   'Konfirmasi',
                   style: TextStyle(

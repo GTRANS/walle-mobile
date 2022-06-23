@@ -61,3 +61,22 @@ class RegisterInput {
     return data;
   }
 }
+
+class VerificationInput {
+  String? email;
+  String? code;
+
+  VerificationInput({this.email, this.code});
+
+  VerificationInput.fromJson(Map<String, dynamic> json) {
+    email = json['email'];
+    code = json['code'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['email'] = email;
+    data['code'] = code;
+    return data;
+  }
+}

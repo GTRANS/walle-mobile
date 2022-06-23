@@ -15,4 +15,12 @@ class AuthAPI {
 
     return await Future.value(TokenResult.fromJson(response));
   }
+
+  static Future<TokenResult> verification(
+      {required VerificationInput input}) async {
+    Services repo = Services();
+    final response = await repo.post(url: '/user/verifikasi', data: input);
+
+    return await Future.value(TokenResult.fromJson(response));
+  }
 }

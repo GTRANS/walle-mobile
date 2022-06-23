@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
     var token = await storage.get(key: 'auth_token');
     var firstTime = await storage.getBool(key: 'first_time') ?? true;
 
-    if (token == null || token.isEmpty) {
+    if (token == null || token.isEmpty || token == "") {
       if (firstTime) {
         Navigator.of(context).pushReplacementNamed('/onboarding');
       } else {

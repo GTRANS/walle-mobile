@@ -405,7 +405,8 @@ class _RegisterFormState extends State<RegisterForm> {
                             .register(input: input);
 
                     if (res.status == ApiStatus.success && res.data != null) {
-                      Navigator.of(context).pushNamed('/verification');
+                      Navigator.of(context)
+                          .pushNamed('/verification', arguments: input);
                     } else {
                       if (res.message != null) {
                         ScaffoldMessenger.of(context).showSnackBar(
