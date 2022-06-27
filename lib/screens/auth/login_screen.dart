@@ -49,8 +49,6 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    // final viewModel = LoginViewModel();
-
     return Form(
       key: _formKey,
       child: Column(
@@ -71,6 +69,14 @@ class _LoginFormState extends State<LoginForm> {
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return '* Required';
+                        }
+                        if (value.isNotEmpty) {
+                          String pattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
+                          RegExp regExp = RegExp(pattern);
+
+                          if (!regExp.hasMatch(value)) {
+                            return 'Email tidak valid!';
+                          }
                         }
                         return null;
                       },
