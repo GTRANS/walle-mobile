@@ -16,17 +16,21 @@ class Services {
   Services._internal() {
     _dio ??= Dio(
       BaseOptions(
-        baseUrl: 'http://178.128.124.201',
+        baseUrl: 'https://bearuang.me',
       ),
     );
+    _dio?.interceptors
+        .add(LogInterceptor(responseBody: true, requestBody: true));
   }
   Services._assignToken([String? token]) {
     _dio = Dio(
       BaseOptions(
-        baseUrl: 'http://178.128.124.201',
+        baseUrl: 'https://bearuang.me',
         headers: token != null ? {'authorization': 'Bearer $token'} : null,
       ),
     );
+    _dio?.interceptors
+        .add(LogInterceptor(responseBody: true, requestBody: true));
   }
   factory Services() {
     return Services._internal();
