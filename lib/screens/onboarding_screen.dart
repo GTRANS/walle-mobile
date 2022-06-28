@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:capstone/constants/color_constants.dart';
+import '../constants/color_constants.dart';
 import 'package:flutter/material.dart';
 import 'onboarding_items.dart';
 
@@ -151,7 +151,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           <Widget>[
             OutlinedButton(
               onPressed: () {
-                if (currentPage == 3.0) {
+                if (currentPage == 2.0) {
                   Navigator.of(context).pushNamed('/login');
                 } else {
                   _pageViewController.jumpToPage((currentPage + 1).toInt());
