@@ -181,7 +181,8 @@ class _LoginFormState extends State<LoginForm> {
                     children: <Widget>[
                       OutlinedButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed('/forgot-password');
+                          Navigator.of(context)
+                              .pushNamed('/request-forgot-password');
                         },
                         style: OutlinedButton.styleFrom(
                           side: const BorderSide(

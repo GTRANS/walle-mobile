@@ -23,4 +23,20 @@ class AuthAPI {
 
     return await Future.value(TokenResult.fromJson(response));
   }
+
+  static Future<TokenResult> resetPasswordReqeust(
+      {required ResetPasswordRequestInput input}) async {
+    Services repo = Services();
+    final response = await repo.post(url: '/user/reset', data: input);
+
+    return await Future.value(TokenResult.fromJson(response));
+  }
+
+  static Future<TokenResult> resetPassword(
+      {required ResetPasswordRequestInput input}) async {
+    Services repo = Services();
+    final response = await repo.post(url: '/user/reset/update', data: input);
+
+    return await Future.value(TokenResult.fromJson(response));
+  }
 }

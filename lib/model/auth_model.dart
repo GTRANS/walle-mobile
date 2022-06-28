@@ -80,3 +80,25 @@ class VerificationInput {
     return data;
   }
 }
+
+class ResetPasswordRequestInput {
+  String? email;
+  String? code;
+  String? password;
+
+  ResetPasswordRequestInput({this.email, this.code, this.password});
+
+  ResetPasswordRequestInput.fromJson(Map<String, dynamic> json) {
+    email = json['email'];
+    code = json['code'];
+    password = json['password'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['email'] = email;
+    data['code'] = code;
+    data['password'] = password;
+    return data;
+  }
+}
