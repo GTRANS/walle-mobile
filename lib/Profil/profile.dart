@@ -38,18 +38,12 @@ class _ProfileState extends State<Profile> {
           return Future.value(false);
         },
         child: Scaffold(
+            backgroundColor: const Color.fromARGB(255, 255, 250, 250),
             appBar: AppBar(
               title: const Text("Profil"),
               foregroundColor: Colors.black,
               backgroundColor: Colors.white,
               elevation: 1,
-              leading: IconButton(
-                icon: const Icon(
-                  Icons.arrow_back,
-                  color: Colors.black,
-                ),
-                onPressed: () {},
-              ),
             ),
             body: GestureDetector(
               onTap: () {
@@ -68,10 +62,6 @@ class _ProfileState extends State<Profile> {
                         decoration: BoxDecoration(
                           border: Border.all(width: 4),
                           shape: BoxShape.circle,
-                          // image: const DecorationImage(
-                          //     fit: BoxFit.cover,
-                          //     image: AssetImage("assets/emyu.jpg")
-                          //     )
                         ),
                       ),
                       Positioned(
@@ -89,21 +79,6 @@ class _ProfileState extends State<Profile> {
                     ]),
                   ),
                   const SizedBox(height: 35),
-                  // const TextField(
-                  //     decoration: InputDecoration(
-                  //         contentPadding: EdgeInsets.only(bottom: 3),
-                  //         labelText: "Nama",
-                  //         floatingLabelBehavior: FloatingLabelBehavior.always,
-                  //         hintText: "Input ",
-                  //         hintStyle: TextStyle(fontSize: 16, color: Colors.black))),
-                  // Icon(Icons.arrow_forward_ios),
-                  // // const TextField(
-                  //     decoration: InputDecoration(
-                  //         contentPadding: EdgeInsets.only(bottom: 3),
-                  //         labelText: "Nama",
-                  //         floatingLabelBehavior: FloatingLabelBehavior.always,
-                  //         hintText: "Input Nama",
-                  //         hintStyle: TextStyle(fontSize: 16, color: Colors.black))),
                   buildTextField("Nama", "Input Nama"),
                   buildTextField("No HP", "Input No HP"),
                   buildTextField("Email", "Input Email"),
@@ -129,10 +104,6 @@ class _ProfileState extends State<Profile> {
                             )
                           ],
                         ),
-                        // child: const Text(
-                        //   "Keluar",
-                        //   style: TextStyle(fontSize: 14, letterSpacing: 2.2),
-                        // )
                       )
                     ],
                   )

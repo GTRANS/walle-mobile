@@ -24,27 +24,38 @@ class _HistoryState extends State<History> with SingleTickerProviderStateMixin {
       appBar: AppBar(
         title: const Text("Riwayat Transaksi"),
         foregroundColor: Colors.black,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.white,
         elevation: 1,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-          onPressed: () {},
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(
+        //     Icons.arrow_back,
+        //     color: Colors.black,
+        //   ),
+        //   onPressed: () {},
+        // ),
         bottom: TabBar(
           controller: _tabController,
           tabs: const [
             Tab(
-              text: "Berhasil",
+              child: Text(
+                "Berhasil",
+                style: TextStyle(
+                    fontSize: 18, color: Color.fromARGB(255, 0, 255, 98)),
+              ),
             ),
             Tab(
-              text: "Tertunda",
-            ),
+                child: Text(
+              "Tertunda",
+              style: TextStyle(
+                  fontSize: 18, color: Color.fromARGB(255, 251, 194, 25)),
+            )),
             Tab(
-              text: "Gagal",
-            )
+              child: Text(
+                "Gagal",
+                style: TextStyle(
+                    fontSize: 18, color: Color.fromARGB(255, 255, 0, 0)),
+              ),
+            ),
           ],
         ),
       ),
