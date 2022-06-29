@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_application_2/Beranda/Beranda%20Screen/baner.dart';
-import 'package:flutter_application_2/Beranda/Beranda%20Screen/menu.dart';
+import 'package:capstone/screens/home/widgets/menu.dart';
 
-class Beranda extends StatelessWidget {
-  const Beranda({Key? key}) : super(key: key);
+import 'widgets/banner_carousel.dart';
+import 'package:flutter/material.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +15,10 @@ class Beranda extends StatelessWidget {
             padding: const EdgeInsets.all(100),
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/Ellipse 4.png"),
+                    image: AssetImage("assets/top_home.png"),
                     fit: BoxFit.fill))),
         title: Center(
-          child: Image.asset("assets/Logo.png"),
+          child: Image.asset("assets/logo.png"),
         ),
       ),
       body: SingleChildScrollView(
@@ -25,7 +26,7 @@ class Beranda extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           MainMenu(),
-          Carousel(),
+          BannerCarousel(),
         ],
       )),
     );

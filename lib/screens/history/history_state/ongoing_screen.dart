@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Tertunda extends StatefulWidget {
-  const Tertunda({Key? key}) : super(key: key);
+class OngoingScreen extends StatefulWidget {
+  const OngoingScreen({Key? key}) : super(key: key);
 
   @override
-  State<Tertunda> createState() => _TertundaState();
+  State<OngoingScreen> createState() => _OngoingScreenState();
 }
 
-class _TertundaState extends State<Tertunda> {
+class _OngoingScreenState extends State<OngoingScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

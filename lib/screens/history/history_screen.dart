@@ -1,16 +1,17 @@
+import '../../screens/history/history_state/success_screen.dart';
+import '../../screens/history/history_state/ongoing_screen.dart';
+import '../../screens/history/history_state/fail_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/History/Histroy%20Screen/berhasil.dart';
-import 'package:flutter_application_2/History/Histroy%20Screen/gagal.dart';
-import 'package:flutter_application_2/History/Histroy%20Screen/tertunda.dart';
 
-class History extends StatefulWidget {
-  const History({Key? key}) : super(key: key);
+class HistoryScreen extends StatefulWidget {
+  const HistoryScreen({Key? key}) : super(key: key);
 
   @override
-  State<History> createState() => _HistoryState();
+  State<HistoryScreen> createState() => _HistoryScreenState();
 }
 
-class _HistoryState extends State<History> with SingleTickerProviderStateMixin {
+class _HistoryScreenState extends State<HistoryScreen>
+    with SingleTickerProviderStateMixin {
   TabController? _tabController;
   @override
   void initState() {
@@ -61,7 +62,7 @@ class _HistoryState extends State<History> with SingleTickerProviderStateMixin {
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const [Berhasil(), Tertunda(), Gagal()],
+        children: const [SuccessScreen(), OngoingScreen(), FailScreen()],
       ),
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/Beranda/Beranda%20Screen/menu.dart';
+import '../../home/widgets/menu.dart';
 
 class Pulsa extends StatefulWidget {
   const Pulsa({Key? key}) : super(key: key);

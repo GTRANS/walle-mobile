@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 
-class Berhasil extends StatefulWidget {
-  const Berhasil({Key? key}) : super(key: key);
+class SuccessScreen extends StatefulWidget {
+  const SuccessScreen({Key? key}) : super(key: key);
 
   @override
-  State<Berhasil> createState() => _BerhasilState();
+  State<SuccessScreen> createState() => _SuccessScreenState();
 }
 
-class _BerhasilState extends State<Berhasil> {
+class _SuccessScreenState extends State<SuccessScreen> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -30,7 +30,7 @@ class _BerhasilState extends State<Berhasil> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
-                  "assets/Device.png",
+                  "assets/history_pulsa.png",
                   height: 45,
                   width: 45,
                 ),

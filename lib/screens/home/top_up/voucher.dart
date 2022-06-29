@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/Beranda/Beranda%20Screen/menu.dart';
+import '../../home/widgets/menu.dart';
 
 class Voucher extends StatelessWidget {
   const Voucher({Key? key}) : super(key: key);

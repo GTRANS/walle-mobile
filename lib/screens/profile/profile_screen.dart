@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileScreenState extends State<ProfileScreen> {
   Future exitDialog() {
     return showDialog(
         context: context,

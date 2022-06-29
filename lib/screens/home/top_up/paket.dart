@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/Beranda/Beranda%20Screen/menu.dart';
+
+import '../../home/widgets/menu.dart';
 
 class Paket extends StatelessWidget {
   const Paket({Key? key}) : super(key: key);

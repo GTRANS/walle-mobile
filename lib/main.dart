@@ -1,3 +1,5 @@
+import 'package:capstone/screens/main/main_screen.dart';
+
 import 'screens/auth/forgot_password_screen.dart';
 import 'screens/auth/forgot_password_success_screen.dart';
 import 'screens/auth/forgot_password_verification_screen.dart';
@@ -41,7 +43,7 @@ Future<void> main() async {
           '/forgot-password': (_) => const ForgotPasswordScreen(),
           '/forgot-password-success': (_) => const ForgotPasswordSuccess(),
           '/verification': (_) => const VerificationScreen(),
-          '/main': (_) => const Scaffold(),
+          '/main': (_) => const MainScreen(),
         },
       ),
     ),

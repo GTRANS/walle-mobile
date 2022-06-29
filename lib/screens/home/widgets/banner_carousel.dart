@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../Top Up Screen/paket.dart';
-import '../Top Up Screen/pulsa.dart';
-import '../Top Up Screen/voucher.dart';
+import '../top_up/paket.dart';
+import '../top_up/pulsa.dart';
+import '../top_up/voucher.dart';
 
-class Carousel extends StatelessWidget {
-  const Carousel({Key? key}) : super(key: key);
+class BannerCarousel extends StatelessWidget {
+  const BannerCarousel({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class Carousel extends StatelessWidget {
                     children: [
                       Container(
                         padding: const EdgeInsets.only(left: 30),
-                        child: Image.asset("assets/image 1.png"),
+                        child: Image.asset("assets/banner_1.png"),
                       )
                     ],
                   ),
@@ -52,7 +52,7 @@ class Carousel extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.only(left: 20),
                   child: Row(
-                    children: [Image.asset("assets/image 3.png")],
+                    children: [Image.asset("assets/banner_3.png")],
                   ),
                 ),
               ),
@@ -64,7 +64,7 @@ class Carousel extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.only(left: 15),
                   child: Row(
-                    children: [Image.asset("assets/image 2.png")],
+                    children: [Image.asset("assets/banner_2.png")],
                   ),
                 ),
               ),
@@ -86,7 +86,7 @@ class Carousel extends StatelessWidget {
                   children: [
                     Container(
                       padding: const EdgeInsets.all(15),
-                      child: Image.asset("assets/GG Gaming.png"),
+                      child: Image.asset("assets/gg_gaming.png"),
                     )
                   ],
                 ),
@@ -101,7 +101,7 @@ class Carousel extends StatelessWidget {
                 children: [
                   const Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 30)),
                   Image.asset(
-                    "assets/Panel Bawah.png",
+                    "assets/bottom_panel.png",
                     fit: BoxFit.contain,
                   )
                 ],

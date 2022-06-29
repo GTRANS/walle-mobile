@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Gagal extends StatefulWidget {
-  const Gagal({Key? key}) : super(key: key);
+class FailScreen extends StatefulWidget {
+  const FailScreen({Key? key}) : super(key: key);
 
   @override
-  State<Gagal> createState() => _GagalState();
+  State<FailScreen> createState() => _FailScreenState();
 }
 
-class _GagalState extends State<Gagal> {
+class _FailScreenState extends State<FailScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
