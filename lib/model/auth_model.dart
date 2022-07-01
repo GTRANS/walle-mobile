@@ -44,20 +44,20 @@ class RegisterInput {
       {this.name, this.email, this.password, this.phoneNumber, this.roleId});
 
   RegisterInput.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
+    name = json['nama'];
     email = json['email'];
     password = json['password'];
-    phoneNumber = json['phoneNumber'];
-    roleId = json['roleId'];
+    phoneNumber = json['nomor_handphone'];
+    roleId = json['role_id'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['name'] = name;
+    data['nama'] = name;
     data['email'] = email;
     data['password'] = password;
-    data['phoneNumber'] = phoneNumber;
-    data['roleId'] = roleId;
+    data['nomor_handphone'] = phoneNumber;
+    data['role_id'] = roleId;
     return data;
   }
 }
@@ -70,13 +70,13 @@ class VerificationInput {
 
   VerificationInput.fromJson(Map<String, dynamic> json) {
     email = json['email'];
-    code = json['code'];
+    code = json['kode'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['email'] = email;
-    data['code'] = code;
+    data['kode'] = code;
     return data;
   }
 }
@@ -90,14 +90,14 @@ class ResetPasswordRequestInput {
 
   ResetPasswordRequestInput.fromJson(Map<String, dynamic> json) {
     email = json['email'];
-    code = json['code'];
+    code = json['kode'];
     password = json['password'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['email'] = email;
-    data['code'] = code;
+    data['kode'] = code;
     data['password'] = password;
     return data;
   }
