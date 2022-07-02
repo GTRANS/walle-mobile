@@ -1,3 +1,5 @@
+import '../../services/local_storage.dart';
+import '../../model/user_model.dart';
 import '../../model/auth_model.dart';
 import '../../services/services.dart';
 
@@ -38,5 +40,14 @@ class AuthAPI {
     final response = await repo.post(url: '/user/reset/update', data: input);
 
     return await Future.value(TokenResult.fromJson(response));
+  }
+
+  static Future<User> getMe() async {
+    LocalStorage storage = LocalStorage();
+    final token = await storage.get(key: 'auth_token');
+    Services repo = Services.assignToken(token);
+    final response = await repo.get(url: '/user');
+
+    return await Future.value(User.fromJson(response['user']));
   }
 }
