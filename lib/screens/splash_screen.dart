@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
       } else {
         Navigator.of(context).pushReplacementNamed('/login');
       }
-      await storage.setBool(key: 'first_time', data: true);
+      await storage.setBool(key: 'first_time', data: false);
     } else {
       Navigator.of(context).pushReplacementNamed('/main');
     }

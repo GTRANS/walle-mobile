@@ -1,5 +1,5 @@
-import 'package:capstone/screens/main/main_screen.dart';
-
+import 'screens/main/main_screen.dart';
+import 'view_models/user_view_model.dart';
 import 'screens/auth/forgot_password_screen.dart';
 import 'screens/auth/forgot_password_success_screen.dart';
 import 'screens/auth/forgot_password_verification_screen.dart';
@@ -23,6 +23,9 @@ Future<void> main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => TokenViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => UserViewModel(),
         ),
       ],
       child: MaterialApp(
