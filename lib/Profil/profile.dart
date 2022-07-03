@@ -9,6 +9,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  bool isObscurePassword = true;
   Future exitDialog() {
     return showDialog(
         context: context,
@@ -79,10 +80,11 @@ class _ProfileState extends State<Profile> {
                     ]),
                   ),
                   const SizedBox(height: 35),
-                  buildTextField("Nama", "Input Nama"),
-                  buildTextField("No HP", "Input No HP"),
-                  buildTextField("Email", "Input Email"),
-                  const SizedBox(height: 160),
+                  buildTextField("Nama", "Input Nama", false),
+                  buildTextField("No HP", "Input No HP", false),
+                  buildTextField("Email", "Input Email", false),
+                  buildTextField("Password", "********", true),
+                  const SizedBox(height: 110),
                   Row(
                     children: [
                       OutlinedButton(
@@ -112,16 +114,27 @@ class _ProfileState extends State<Profile> {
             )));
   }
 
-  Widget buildTextField(String labelText, String placeholder) {
+  Widget buildTextField(
+      String labelText, String placeholder, bool isPasswordTextField) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 35),
+      padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
       child: TextField(
+          obscureText: isPasswordTextField ? isObscurePassword : false,
           decoration: InputDecoration(
+              suffixIcon: isPasswordTextField
+                  ? IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.remove_red_eye,
+                        color: Colors.grey,
+                      ))
+                  : null,
               contentPadding: const EdgeInsets.only(bottom: 3),
               labelText: labelText,
+              labelStyle: const TextStyle(fontSize: 20),
               floatingLabelBehavior: FloatingLabelBehavior.always,
               hintText: placeholder,
-              hintStyle: const TextStyle(fontSize: 16, color: Colors.black))),
+              hintStyle: const TextStyle(fontSize: 14, color: Colors.black))),
     );
   }
 }
