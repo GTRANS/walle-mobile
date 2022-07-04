@@ -1,8 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import '../../model/transaction_model.dart';
+import '../../screens/history/history_transaction_screen.dart';
 import '../../constants/color_constants.dart';
-import '../../screens/history/history_state/success_screen.dart';
-import '../../screens/history/history_state/ongoing_screen.dart';
-import '../../screens/history/history_state/fail_screen.dart';
 import 'package:flutter/material.dart';
 
 class HistoryScreen extends StatefulWidget {
@@ -103,10 +102,16 @@ class _HistoryScreenState extends State<HistoryScreen>
             Expanded(
               child: TabBarView(
                 controller: _tabController,
-                children: [
-                  SuccessScreen(),
-                  OngoingScreen(),
-                  FailScreen(),
+                children: const [
+                  HistoryTransactionScreen(
+                    status: TransactionStatus.success,
+                  ),
+                  HistoryTransactionScreen(
+                    status: TransactionStatus.pending,
+                  ),
+                  HistoryTransactionScreen(
+                    status: TransactionStatus.fail,
+                  ),
                 ],
               ),
             ),
