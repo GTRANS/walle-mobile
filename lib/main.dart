@@ -1,3 +1,4 @@
+import 'view_models/transaction_view_model.dart';
 import 'screens/main/main_screen.dart';
 import 'view_models/user_view_model.dart';
 import 'screens/auth/forgot_password_screen.dart';
@@ -26,6 +27,9 @@ Future<void> main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => UserViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => TransactionViewModel(),
         ),
       ],
       child: MaterialApp(

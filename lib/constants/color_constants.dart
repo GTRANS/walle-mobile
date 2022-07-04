@@ -8,5 +8,6 @@ class CustomColors {
   static const error = Color.fromRGBO(255, 0, 0, 1);
   static const backgroundColor = Color.fromRGBO(252, 247, 247, 1);
   static const darkGrey = Color.fromRGBO(154, 149, 149, 1);
+  static const yellow = Color.fromRGBO(255, 201, 91, 1);
   static const transparent = Colors.transparent;
 }
