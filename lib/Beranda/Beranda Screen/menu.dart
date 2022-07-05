@@ -52,7 +52,7 @@ class _MainMenuState extends State<MainMenu> {
                                         MaterialPageRoute(
                                             builder: (_) => const Pulsa()));
                                   },
-                                  icon: Image.asset("assets/Frame 67.png"),
+                                  icon: Image.asset("assets/icon_pulsa.png"),
                                   iconSize: 60,
                                 ),
                                 const Text("Pulsa",
@@ -67,7 +67,7 @@ class _MainMenuState extends State<MainMenu> {
                                         MaterialPageRoute(
                                             builder: (_) => const Paket()));
                                   },
-                                  icon: Image.asset("assets/Frame 68.png"),
+                                  icon: Image.asset("assets/icon_paket.png"),
                                   iconSize: 60,
                                 ),
                                 const Text("Paket Data",
@@ -82,7 +82,7 @@ class _MainMenuState extends State<MainMenu> {
                                         MaterialPageRoute(
                                             builder: (_) => const Voucher()));
                                   },
-                                  icon: Image.asset("assets/Frame 72.png"),
+                                  icon: Image.asset("assets/icon_game.png"),
                                   iconSize: 60,
                                 ),
                                 const Text("Voucher Game",

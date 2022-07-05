@@ -38,7 +38,7 @@ class Carousel extends StatelessWidget {
                     children: [
                       Container(
                         padding: const EdgeInsets.only(left: 30),
-                        child: Image.asset("assets/image 1.png"),
+                        child: Image.asset("assets/banner1.png"),
                       )
                     ],
                   ),
@@ -52,7 +52,7 @@ class Carousel extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.only(left: 20),
                   child: Row(
-                    children: [Image.asset("assets/image 3.png")],
+                    children: [Image.asset("assets/banner3.png")],
                   ),
                 ),
               ),
@@ -64,7 +64,7 @@ class Carousel extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.only(left: 15),
                   child: Row(
-                    children: [Image.asset("assets/image 2.png")],
+                    children: [Image.asset("assets/banner2.png")],
                   ),
                 ),
               ),
