@@ -1,5 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import '../../../constants/color_constants.dart';
 import 'package:flutter/material.dart';
-
 import '../top_up/paket.dart';
 import '../top_up/pulsa.dart';
 import '../top_up/voucher.dart';
@@ -14,9 +15,9 @@ class BannerCarousel extends StatelessWidget {
       children: [
         Container(
           padding: const EdgeInsets.only(left: 30),
-          child: const Text(
+          child: const AutoSizeText(
             "Benefit",
-            style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 16, color: CustomColors.black),
           ),
         ),
         const SizedBox(
@@ -39,7 +40,7 @@ class BannerCarousel extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.only(left: 30),
                         child: Image.asset("assets/banner_1.png"),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -82,12 +83,13 @@ class BannerCarousel extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.fromLTRB(30, 0, 20, 0),
                 child: Row(
-                  // mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(15),
-                      child: Image.asset("assets/gg_gaming.png"),
-                    )
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.all(15),
+                        child: Image.asset("assets/gg_gaming.png"),
+                      ),
+                    ),
                   ],
                 ),
               ),

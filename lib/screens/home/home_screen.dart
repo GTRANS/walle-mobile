@@ -1,5 +1,5 @@
-import 'package:capstone/screens/home/widgets/menu.dart';
-
+import '../../constants/color_constants.dart';
+import '../../screens/home/widgets/menu.dart';.
 import 'widgets/banner_carousel.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +11,9 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 251, 246, 246),
       appBar: AppBar(
+        backgroundColor: CustomColors.white,
+        elevation: 0,
+        automaticallyImplyLeading: false,
         flexibleSpace: Container(
             padding: const EdgeInsets.all(100),
             decoration: const BoxDecoration(
@@ -22,13 +25,14 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          MainMenu(),
-          BannerCarousel(),
-        ],
-      )),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: const [
+            MainMenu(),
+            BannerCarousel(),
+          ],
+        ),
+      ),
     );
   }
 }

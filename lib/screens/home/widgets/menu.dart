@@ -1,5 +1,10 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import '../../../constants/color_constants.dart';
+import '../../../services/services.dart';
+import '../../../view_models/user_view_model.dart';
+import '../../../widgets/error_view.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import '../top_up/paket.dart';
 import '../top_up/pulsa.dart';
 import '../top_up/voucher.dart';
@@ -12,6 +17,20 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
+  void getUser() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<UserViewModel>(context, listen: false).getInfo();
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<UserViewModel>(context, listen: false).getInfo();
+    });
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,15 +43,32 @@ class _MainMenuState extends State<MainMenu> {
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Image.asset("assets/phone.png"),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  const Expanded(child: Text("No HP Utama : 0869696969"))
-                ],
-              ),
+              Consumer<UserViewModel>(builder: (_, state, __) {
+                if (state.user?.status == ApiStatus.error) {
+                  return ErrorView(
+                      errorMessage: state.user?.message ?? "",
+                      refetch: getUser);
+                }
+
+                if (state.user?.status == ApiStatus.loading) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                return Row(
+                  children: [
+                    Image.asset("assets/phone.png"),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Expanded(
+                      child: AutoSizeText(
+                        "No HP Utama : ${state.user?.data?.phoneNumber}",
+                        style: const TextStyle(fontSize: 12.0),
+                      ),
+                    ),
+                  ],
+                );
+              }),
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Column(
@@ -54,8 +90,11 @@ class _MainMenuState extends State<MainMenu> {
                                 icon: Image.asset("assets/pulsa.png"),
                                 iconSize: 60,
                               ),
-                              const Text("Pulsa",
-                                  style: TextStyle(fontSize: 13))
+                              const AutoSizeText(
+                                "Pulsa",
+                                style: TextStyle(
+                                    fontSize: 10, color: CustomColors.darkGrey),
+                              ),
                             ],
                           ),
                           Column(
@@ -68,8 +107,11 @@ class _MainMenuState extends State<MainMenu> {
                                 icon: Image.asset("assets/paket.png"),
                                 iconSize: 60,
                               ),
-                              const Text("Paket Data",
-                                  style: TextStyle(fontSize: 13))
+                              const AutoSizeText(
+                                "Paket Data",
+                                style: TextStyle(
+                                    fontSize: 10, color: CustomColors.darkGrey),
+                              ),
                             ],
                           ),
                           Column(
@@ -82,16 +124,19 @@ class _MainMenuState extends State<MainMenu> {
                                 icon: Image.asset("assets/voucher_game.png"),
                                 iconSize: 60,
                               ),
-                              const Text("Voucher Game",
-                                  style: TextStyle(fontSize: 13))
+                              const AutoSizeText(
+                                "Voucher Game",
+                                style: TextStyle(
+                                    fontSize: 10, color: CustomColors.darkGrey),
+                              ),
                             ],
                           ),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
-              )
+              ),
             ],
           ))
         ],

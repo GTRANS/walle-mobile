@@ -10,4 +10,5 @@ class CustomColors {
   static const darkGrey = Color.fromRGBO(154, 149, 149, 1);
   static const yellow = Color.fromRGBO(255, 201, 91, 1);
   static const transparent = Colors.transparent;
+  static const selectCard = Color.fromRGBO(202, 237, 225, 1);
 }
