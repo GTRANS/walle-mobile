@@ -1,5 +1,5 @@
 import '../../constants/color_constants.dart';
-import '../../screens/home/widgets/menu.dart';.
+import '../../screens/home/widgets/menu.dart';
 import 'widgets/banner_carousel.dart';
 import 'package:flutter/material.dart';
 
