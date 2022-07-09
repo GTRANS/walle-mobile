@@ -10,7 +10,7 @@ class ProductAPI {
     Services repo = Services.assignToken(token);
 
     final response = await repo.get(
-        url: '/produk?kategori=$categoryId&provider=$providerId');
+        url: '/produk/pilih?kategori=$categoryId&provider=$providerId');
 
     return await Future.value(
         response['produk'].map<Product>((e) => Product.fromJson(e)).toList());

@@ -274,71 +274,86 @@ class _PaketState extends State<Paket> {
         });
 
         if (_errorText == null) {
-          showModalBottomSheet<void>(
-            context: context,
-            builder: (BuildContext context) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(
-                  height: 100,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Expanded(
-                        flex: 3,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            const AutoSizeText(
-                              "Total Bayar",
+          if (state.products!.data![index].available!) {
+            showModalBottomSheet<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    height: 100,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Expanded(
+                          flex: 3,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              const AutoSizeText(
+                                "Total Bayar",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: CustomColors.black,
+                                ),
+                              ),
+                              AutoSizeText(
+                                formatCurrency
+                                    .format(state.products?.data?[index].price),
+                                style: const TextStyle(
+                                  fontSize: 20.0,
+                                  color: CustomColors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(CustomColors.main),
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: const AutoSizeText(
+                              'Beli',
                               style: TextStyle(
-                                fontSize: 20.0,
-                                color: CustomColors.black,
-                              ),
-                            ),
-                            AutoSizeText(
-                              formatCurrency
-                                  .format(state.products?.data?[index].price),
-                              style: const TextStyle(
-                                fontSize: 20.0,
-                                color: CustomColors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(CustomColors.main),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
+                                fontSize: 16,
+                                color: CustomColors.white,
                               ),
                             ),
                           ),
-                          onPressed: () {},
-                          child: const AutoSizeText(
-                            'Beli',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: CustomColors.white,
-                            ),
-                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
-          );
+                );
+              },
+            );
+          } else {
+            showModalBottomSheet(
+              context: context,
+              builder: (BuildContext context) {
+                return const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    height: 100,
+                    child: Center(child: Text('Tidak Tersedia')),
+                  ),
+                );
+              },
+            );
+          }
         }
       },
     );
