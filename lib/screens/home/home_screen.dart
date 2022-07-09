@@ -1,7 +1,10 @@
-import 'package:capstone/screens/home/widgets/menu.dart';
+import 'package:capstone/screens/admin/body_screen.dart';
+// import 'package:capstone/screens/home/widgets/manage_product.dart';
+// import 'package:capstone/screens/home/widgets/menu.dart';
 
-import 'widgets/banner_carousel.dart';
 import 'package:flutter/material.dart';
+
+import '../admin/manage_product.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -24,10 +27,7 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          MainMenu(),
-          BannerCarousel(),
-        ],
+        children: const [BodyScreen(), ManageProduct()],
       )),
     );
   }

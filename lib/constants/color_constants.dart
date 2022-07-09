@@ -10,4 +10,6 @@ class CustomColors {
   static const darkGrey = Color.fromRGBO(154, 149, 149, 1);
   static const yellow = Color.fromRGBO(255, 201, 91, 1);
   static const transparent = Colors.transparent;
+
+  static const manageProduct = Color.fromRGBO(226, 167, 188, 100);
 }
