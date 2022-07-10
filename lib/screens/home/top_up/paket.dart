@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import '../../../screens/home/top_up/checkout_screen.dart';
 import '../../../constants/color_constants.dart';
 import '../../../services/services.dart';
 import '../../../view_models/product_view_model.dart';
@@ -324,7 +325,17 @@ class _PaketState extends State<Paket> {
                                 ),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) => Checkout(
+                                    product: state.products!.data![index],
+                                    phoneNumber: phoneController.value.text,
+                                    isVoucher: false,
+                                  ),
+                                ),
+                              );
+                            },
                             child: const AutoSizeText(
                               'Beli',
                               style: TextStyle(

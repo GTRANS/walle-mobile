@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import '../../../screens/home/top_up/checkout_screen.dart';
 import '../../../constants/color_constants.dart';
 import '../../../model/provider_model.dart' as model;
 import '../../../services/services.dart';
@@ -211,7 +212,14 @@ class _VoucherDetailState extends State<VoucherDetail> {
                               ),
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (_) => Checkout(
+                                      product: state.products!.data![index],
+                                      phoneNumber: "",
+                                      isVoucher: true,
+                                    )));
+                          },
                           child: const AutoSizeText(
                             'Beli',
                             style: TextStyle(
