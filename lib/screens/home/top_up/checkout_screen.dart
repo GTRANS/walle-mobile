@@ -1,4 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import '../../../model/transaction_model.dart';
+import '../../../view_models/transaction_view_model.dart';
+import '../../../view_models/user_view_model.dart';
+import 'package:provider/provider.dart';
 import '../../../constants/color_constants.dart';
 import '../../../model/product_model.dart';
 import 'package:flutter/material.dart';
@@ -192,7 +196,33 @@ class _CheckoutState extends State<Checkout> {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () async {
+                      final user = await Provider.of<UserViewModel>(context,
+                              listen: false)
+                          .getInfo();
+
+                      if (_paymentMethod == PaymentMethod.bank) {
+                        final BankTransactionInput input = BankTransactionInput(
+                          bank: "bca",
+                          productId: widget.product.id,
+                          userId: user.data!.id,
+                        );
+
+                        await Provider.of<TransactionViewModel>(context,
+                                listen: false)
+                            .bankPayment(input: input);
+                      } else if (_paymentMethod == PaymentMethod.ewallet) {
+                        final EWalletTransactionInput input =
+                            EWalletTransactionInput(
+                          productId: widget.product.id,
+                          userId: user.data!.id,
+                        );
+
+                        await Provider.of<TransactionViewModel>(context,
+                                listen: false)
+                            .eWalletPayment(input: input);
+                      }
+                    },
                     child: const AutoSizeText(
                       'Bayar',
                       style: TextStyle(

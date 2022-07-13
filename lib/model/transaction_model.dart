@@ -32,21 +32,62 @@ class Transaction {
 
   Transaction.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    status = json['transaction_status'];
+    status = json['status_transaksi'];
     orderId = json['order_id'];
-    paymentType = json['payment_type'];
-    transactionDate = json['transaction_time'];
+    paymentType = json['metode_pembayaran'];
+    transactionDate = json['waktu_transaksi'];
     product = Product.fromJson(json['produk']);
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['transaction_status'] = status;
+    data['status_transaksi'] = status;
     data['order_id'] = orderId;
-    data['payment_type'] = paymentType;
-    data['transaction_time'] = transactionDate;
+    data['metode_pembayaran'] = paymentType;
+    data['waktu_transaksi'] = transactionDate;
     data['produk'] = product?.toJson();
+    return data;
+  }
+}
+
+class BankTransactionInput {
+  int? userId;
+  int? productId;
+  String? bank;
+
+  BankTransactionInput({this.userId, this.productId, this.bank});
+
+  BankTransactionInput.fromJson(Map<String, dynamic> json) {
+    userId = json['user_id'];
+    productId = json['produk_id'];
+    bank = json['bank'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['user_id'] = userId;
+    data['produk_id'] = productId;
+    data['bank'] = bank;
+    return data;
+  }
+}
+
+class EWalletTransactionInput {
+  int? userId;
+  int? productId;
+
+  EWalletTransactionInput({this.userId, this.productId});
+
+  EWalletTransactionInput.fromJson(Map<String, dynamic> json) {
+    userId = json['user_id'];
+    productId = json['produk_id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['user_id'] = userId;
+    data['produk_id'] = productId;
     return data;
   }
 }
