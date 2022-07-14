@@ -22,13 +22,29 @@ class Transaction {
   String? transactionDate;
   Product? product;
 
-  Transaction(
-      {this.id,
-      this.status,
-      this.orderId,
-      this.paymentType,
-      this.transactionDate,
-      this.product});
+  String? productName;
+  int? productPrice;
+  String? phoneNumber;
+  String? qrCodeLink;
+  String? virtualAccountNumber;
+  String? transactionDateNoHour;
+  String? hour;
+
+  Transaction({
+    this.id,
+    this.status,
+    this.orderId,
+    this.paymentType,
+    this.transactionDate,
+    this.product,
+    this.productName,
+    this.productPrice,
+    this.phoneNumber,
+    this.qrCodeLink,
+    this.virtualAccountNumber,
+    this.transactionDateNoHour,
+    this.hour,
+  });
 
   Transaction.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -36,7 +52,15 @@ class Transaction {
     orderId = json['order_id'];
     paymentType = json['metode_pembayaran'];
     transactionDate = json['waktu_transaksi'];
-    product = Product.fromJson(json['produk']);
+    product = json['produk'] != null ? Product.fromJson(json['produk']) : null;
+
+    productName = json['nama_produk'];
+    productPrice = json['harga'];
+    phoneNumber = json['no_handphone'];
+    qrCodeLink = json['qr_kode_link'];
+    virtualAccountNumber = json['nomor_va'];
+    transactionDateNoHour = json['tanggal_transaksi'];
+    hour = json['jam'];
   }
 
   Map<String, dynamic> toJson() {

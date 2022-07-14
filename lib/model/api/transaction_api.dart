@@ -23,7 +23,7 @@ class TransactionAPI {
     Services repo = Services.assignToken(token);
     final response = await repo.post(url: '/transaksi/bank', data: input);
 
-    return await Future.value(Transaction.fromJson(response));
+    return await Future.value(Transaction.fromJson(response['data']));
   }
 
   static Future<Transaction> eWalletPayment(
@@ -33,6 +33,6 @@ class TransactionAPI {
     Services repo = Services.assignToken(token);
     final response = await repo.post(url: '/transaksi/ewallet', data: input);
 
-    return await Future.value(Transaction.fromJson(response));
+    return await Future.value(Transaction.fromJson(response['data']));
   }
 }

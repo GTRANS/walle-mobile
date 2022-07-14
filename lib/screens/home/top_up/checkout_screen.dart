@@ -1,4 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import '../../../screens/home/top_up/bank_payment_screen.dart';
+import '../../../screens/home/top_up/ewallet_payment_screen.dart';
 import '../../../model/transaction_model.dart';
 import '../../../view_models/transaction_view_model.dart';
 import '../../../view_models/user_view_model.dart';
@@ -208,9 +210,15 @@ class _CheckoutState extends State<Checkout> {
                           userId: user.data!.id,
                         );
 
-                        await Provider.of<TransactionViewModel>(context,
-                                listen: false)
-                            .bankPayment(input: input);
+                        final transaction =
+                            await Provider.of<TransactionViewModel>(context,
+                                    listen: false)
+                                .bankPayment(input: input);
+
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => BankPaymentScreen(
+                                  transaction: transaction.data!,
+                                )));
                       } else if (_paymentMethod == PaymentMethod.ewallet) {
                         final EWalletTransactionInput input =
                             EWalletTransactionInput(
@@ -218,9 +226,14 @@ class _CheckoutState extends State<Checkout> {
                           userId: user.data!.id,
                         );
 
-                        await Provider.of<TransactionViewModel>(context,
-                                listen: false)
-                            .eWalletPayment(input: input);
+                        final transaction =
+                            await Provider.of<TransactionViewModel>(context,
+                                    listen: false)
+                                .eWalletPayment(input: input);
+
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => EwalletPaymentScreen(
+                                transaction: transaction.data!)));
                       }
                     },
                     child: const AutoSizeText(
