@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import '../../../screens/history/transaction_detail_screen.dart';
 import '../../../constants/color_constants.dart';
 import '../../../model/transaction_model.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,13 @@ class _EwalletPaymentScreenState extends State<EwalletPaymentScreen> {
                 ),
               ),
               onPressed: () {
-                //TODO: detail transaction screen
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => TransactionDetailScreen(
+                      transactionId: widget.transaction.id!,
+                    ),
+                  ),
+                );
               },
               child: const AutoSizeText(
                 'Detail Transaksi',

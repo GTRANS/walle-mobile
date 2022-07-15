@@ -85,4 +85,23 @@ class TransactionViewModel extends ChangeNotifier {
     }
     return Future.value(_transaction);
   }
+
+  Future<ApiResponse<Transaction>> detail({required int id}) async {
+    try {
+      changeState(ApiResponse(status: ApiStatus.loading));
+      final res = await TransactionAPI.detail(id: id);
+      changeState(
+          ApiResponse<Transaction>(status: ApiStatus.success, data: res));
+    } catch (e) {
+      if (e is DioError) {
+        changeState(ApiResponse(
+            status: ApiStatus.error,
+            message: (e.response?.data ??
+                {'message': e.message} as dynamic)['pesan'] as dynamic));
+      } else {
+        changeState(ApiResponse(status: ApiStatus.error, message: "Error!!!"));
+      }
+    }
+    return Future.value(_transaction);
+  }
 }

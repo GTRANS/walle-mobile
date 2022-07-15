@@ -1,3 +1,4 @@
+import '../model/provider_model.dart';
 import '../model/product_model.dart';
 
 enum TransactionStatus { success, pending, fail }
@@ -30,6 +31,8 @@ class Transaction {
   String? transactionDateNoHour;
   String? hour;
 
+  Provider? provider;
+
   Transaction({
     this.id,
     this.status,
@@ -44,6 +47,7 @@ class Transaction {
     this.virtualAccountNumber,
     this.transactionDateNoHour,
     this.hour,
+    this.provider,
   });
 
   Transaction.fromJson(Map<String, dynamic> json) {
@@ -56,11 +60,14 @@ class Transaction {
 
     productName = json['nama_produk'];
     productPrice = json['harga'];
-    phoneNumber = json['no_handphone'];
+    phoneNumber = json['nomor_handphone'];
     qrCodeLink = json['qr_kode_link'];
     virtualAccountNumber = json['nomor_va'];
     transactionDateNoHour = json['tanggal_transaksi'];
     hour = json['jam'];
+
+    provider =
+        json['kategori'] != null ? Provider.fromJson(json['kategori']) : null;
   }
 
   Map<String, dynamic> toJson() {

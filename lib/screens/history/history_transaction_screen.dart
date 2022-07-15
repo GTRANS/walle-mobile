@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import '../../screens/history/transaction_detail_screen.dart';
 import '../../constants/color_constants.dart';
 import '../../model/transaction_model.dart';
 import '../../services/services.dart';
@@ -146,7 +147,15 @@ class _HistoryTransactionScreenState extends State<HistoryTransactionScreen> {
                   ),
                 ),
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => TransactionDetailScreen(
+                      transactionId: transaction.id!,
+                    ),
+                  ),
+                );
+              },
             ),
           );
         }),
