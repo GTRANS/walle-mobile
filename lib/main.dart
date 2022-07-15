@@ -1,3 +1,5 @@
+import 'view_models/product_view_model.dart';
+import 'view_models/provider_view_model.dart';
 import 'view_models/transaction_view_model.dart';
 import 'screens/main/main_screen.dart';
 import 'view_models/user_view_model.dart';
@@ -30,6 +32,12 @@ Future<void> main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => TransactionViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProductViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProviderViewModel(),
         ),
       ],
       child: MaterialApp(

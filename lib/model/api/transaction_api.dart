@@ -15,4 +15,33 @@ class TransactionAPI {
         .map<Transaction>((e) => Transaction.fromJson(e))
         .toList());
   }
+
+  static Future<Transaction> bankPayment(
+      {required BankTransactionInput input}) async {
+    LocalStorage storage = LocalStorage();
+    final token = await storage.get(key: 'auth_token');
+    Services repo = Services.assignToken(token);
+    final response = await repo.post(url: '/transaksi/bank', data: input);
+
+    return await Future.value(Transaction.fromJson(response['data']));
+  }
+
+  static Future<Transaction> eWalletPayment(
+      {required EWalletTransactionInput input}) async {
+    LocalStorage storage = LocalStorage();
+    final token = await storage.get(key: 'auth_token');
+    Services repo = Services.assignToken(token);
+    final response = await repo.post(url: '/transaksi/ewallet', data: input);
+
+    return await Future.value(Transaction.fromJson(response['data']));
+  }
+
+  static Future<Transaction> detail({required int id}) async {
+    LocalStorage storage = LocalStorage();
+    final token = await storage.get(key: 'auth_token');
+    Services repo = Services.assignToken(token);
+    final response = await repo.get(url: '/transaksi/$id');
+
+    return await Future.value(Transaction.fromJson(response['transaksi']));
+  }
 }

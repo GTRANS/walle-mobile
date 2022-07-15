@@ -1,3 +1,4 @@
+import '../../constants/color_constants.dart';
 import '../../screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import '../history/history_screen.dart';
@@ -22,10 +23,10 @@ class _MainScreenState extends State<MainScreen> {
           ]),
           bottomNavigationBar: Container(
             decoration: const BoxDecoration(
-                boxShadow: [BoxShadow(color: Colors.black)],
-                color: Colors.white),
+                boxShadow: [BoxShadow(color: CustomColors.black)],
+                color: CustomColors.white),
             child: const TabBar(
-              labelColor: Colors.green,
+              labelColor: CustomColors.main,
               labelPadding: EdgeInsets.all(0.5),
               indicatorWeight: 1,
               labelStyle: TextStyle(fontWeight: FontWeight.bold),
