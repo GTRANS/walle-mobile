@@ -7,6 +7,7 @@ import '../../../widgets/error_view.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:recase/recase.dart';
 
 class TransactionDetailScreen extends StatefulWidget {
   final int transactionId;
